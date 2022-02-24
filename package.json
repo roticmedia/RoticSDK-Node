@@ -1,0 +1,15 @@
+{
+  "name": "roticsdk-node",
+  "version": "0.0.0.1",
+  "description": "Node SDK let you call Rotic Intelligent Solutions API\n\n",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Rotic Intelligent Solutions <info@rotic.ir>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.0"
+  }
+}
