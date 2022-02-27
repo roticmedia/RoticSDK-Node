@@ -1,37 +1,39 @@
-const axios = require("axios");
+const axios = require('axios');
 
-class Request{
+class Request {
 
-    RandomString(length){
+    RandomString(length) {
         return Buffer.from(Math.random().toString()).toString("base64").substr(10, length);
     }
 
-    response;
 
-    MakeRequest(token, api, data, unique_token=null, uri = null){
+    async MakeRequest(token, api, data, unique_token = null, uri = null) {
+
         const AiUri = "https://api.rotic.ir/v2/services/" + token + "/ai";
-
         try {
-            let form = JSON.stringify( {
+            let form = JSON.stringify({
                 api: api,
                 data: data,
-                unique_token: unique_token==null?this.RandomString(10):unique_token,
+                unique_token: unique_token == null ? this.RandomString(10) : unique_token,
             })
             const config = {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                timeout: 1000,
-                // plenty more options can be added, refer source link above
+                timeout: 10,
             }
-            axios.post(AiUri, form, config).then(res => {
-                this.response =  res.data;
-            }).catch(error => {
-                this.response =  error.data;
-            })
 
-            return this.response;
-        }catch (e){
+            let value
+
+            return await axios.post(AiUri, form, config).then(function (res) {
+                value = res.data;
+                return res.data;
+            }).catch(function (error) {
+                value = error;
+                return error;
+            });
+
+        } catch (e) {
             return {
                 "provider": {
                     "website": "https://rotic.ir",

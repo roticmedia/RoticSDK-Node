@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["rotic", "chatbot","chat bot","chat bot api"],
   "author": "Rotic Intelligent Solutions <info@rotic.ir>",
   "license": "ISC",
   "dependencies": {
